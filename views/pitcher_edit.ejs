@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>編集</title></head>
+<body>
+<h2>投手編集</h2>
+
+<form action="/pitcher/update/<%= id %>" method="POST">
+  名前：<input name="name" value="<%= data.name %>"><br>
+  スピリッツ：<input name="spirits" value="<%= data.spirits %>"><br>
+  球威：<input name="power" value="<%= data.power %>"><br>
+  制球：<input name="control" value="<%= data.control%>"><br>
+  スタミナ：<input name="stamina" value="<%= data.stamina%>"><br>
+  <button>更新</button>
+</form>
+
+<a href="/pitcher/<%= id %>">戻る</a>
+</body>
+</html>

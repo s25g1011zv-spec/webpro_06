@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>漫画一覧</title></head>
+<body>
+<h2>漫画一覧</h2>
+
+<table border="1">
+<tr><th>番号</th><th>アニメ名</th></tr>
+<% let n = 1; %>
+<% for(let row of data){ %>
+<tr>
+  <td><%= n %></td>
+  <td><a href="/anime/<%= n-1 %>"><%= row.name %></a></td>
+</tr>
+<% n++; } %>
+</table>
+
+<a href="/anime/create">新規登録</a>
+</body>
+</html>

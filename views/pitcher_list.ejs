@@ -1,0 +1,12 @@
+<h2>使用率上位投手</h2>
+<table border="1">
+<tr><th>順位</th><th>スピリッツ</th><th>投手名</th></tr>
+<% let n=1; for(let row of data){ %>
+<tr>
+<td><%= n %></td>
+<td><%= row.spirits %></td>
+<td><a href="/pitcher/<%= n-1 %>"><%= row.name %></a></td>
+</tr>
+<% n++; } %>
+</table>
+<a href="/pitcher/create">新規登録</a>

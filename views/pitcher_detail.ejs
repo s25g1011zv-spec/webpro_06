@@ -1,0 +1,14 @@
+<ul>
+<li>順位：<%= id+1 %></li>
+<li>名前：<%= data.name %></li>
+<li>スピリッツ：<%= data.spirits %></li>
+<li>球威：<%= data.power %></li>
+<li>制球：<%= data.control %></li>
+<li>スタミナ：<%= data.stamina %></li>
+</ul>
+
+<a href="/pitcher/edit/<%= id %>">編集</a>
+<form action="/pitcher/delete/<%= id %>" method="POST">
+  <button>削除</button>
+</form>
+<a href="/pitcher">戻る</a>

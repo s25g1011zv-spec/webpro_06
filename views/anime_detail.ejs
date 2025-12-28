@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>詳細</title></head>
+<body>
+<h2>漫画詳細</h2>
+
+<ul>
+  <li>番号：<%= id + 1 %></li>
+  <li>名前：<%= data.name %></li>
+  <li>評価：<%= data.rate %></li>
+  <li>漫画巻数：<%= data.episodes %></li>
+</ul>
+
+<a href="/anime/edit/<%= id %>">編集</a>
+
+<form action="/anime/delete/<%= id %>" method="POST" style="display:inline;">
+  <button type="submit">削除</button>
+</form>
+
+<br><br>
+<a href="/anime">一覧へ戻る</a>
+</body>
+</html>

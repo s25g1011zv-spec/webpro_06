@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>編集</title></head>
+<body>
+<h2>ゲーム編集</h2>
+
+<form action="/game/update/<%= id %>" method="POST">
+  名前：<input name="name" value="<%= data.name %>"><br>
+  評価：<input name="rate" value="<%= data.rate %>"><br>
+  ダウンロード数：<input name="downloads" value="<%= data.downloads %>"><br>
+  <button>更新</button>
+</form>
+
+<a href="/game/<%= id %>">戻る</a>
+</body>
+</html>

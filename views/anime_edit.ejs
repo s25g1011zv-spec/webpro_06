@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>編集</title></head>
+<body>
+<h2>漫画編集</h2>
+
+<form action="/anime/update/<%= id %>" method="POST">
+  名前：<input name="name" value="<%= data.name %>"><br>
+  評価：<input name="rate" value="<%= data.rate %>"><br>
+  漫画巻数：<input name="episodes" value="<%= data.episodes %>"><br>
+  <button>更新</button>
+</form>
+
+<a href="/anime/<%= id %>">戻る</a>
+</body>
+</html>

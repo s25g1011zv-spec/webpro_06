@@ -1,0 +1,11 @@
+<h2>ゲーム一覧</h2>
+<table border="1">
+<tr><th>番号</th><th>ゲーム名</th></tr>
+<% let n=1; for(let row of data){ %>
+<tr>
+<td><%= n %></td>
+<td><a href="/game/<%= n-1 %>"><%= row.name %></a></td>
+</tr>
+<% n++; } %>
+</table>
+<a href="/game/create">新規登録</a>

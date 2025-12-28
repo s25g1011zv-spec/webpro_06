@@ -1,0 +1,13 @@
+<ul>
+<li>番号：<%= id+1 %></li>
+<li>名前：<%= data.name %></li>
+<li>評価：<%= data.rate %></li>
+<li>DL数：<%= data.downloads %></li>
+</ul>
+
+<a href="/game/edit/<%= id %>">編集</a>
+<form action="/game/delete/<%= id %>" method="POST">
+  <button>削除</button>
+</form>
+<a href="/game">戻る</a>
+
