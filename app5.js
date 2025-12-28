@@ -6,11 +6,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
-/* ======================
-   データ（変数で管理）
-====================== */
 
-// アニメ一覧
 const animeData = [
   { name: "進撃の巨人", rate: 4.5, episodes: 34 },
   { name: "呪術廻戦", rate: 4.4, episodes: 30 },
@@ -19,7 +15,7 @@ const animeData = [
   { name: "ダイヤのエース",rate:4.6,episodes:47}
 ];
 
-// ゲーム一覧
+
 const gameData = [
   { name: "Minecraft", rate: 3.9, downloads: 280000000 },
   { name: "原神", rate: 4.4, downloads: 115000000 },
@@ -27,7 +23,7 @@ const gameData = [
   { name: "プロスピ", rate:4.6, doenloads: 53000000}
 ];
 
-// プロスピ投手一覧
+
 const pitcherData = [
   { name: "グリフィン", spirits: 4900, power: 79, control: 77, stamina: 74 },
   { name: "大谷翔平", spirits: 4700, power: 86, control: 77, stamina: 83 },
@@ -36,27 +32,17 @@ const pitcherData = [
   { name: "菅野智之", spirits: 5000, power: 85, control: 86, stamina: 86 },
 ];
 
-/* ======================
-   アニメ一覧
-====================== */
 
-/* ======================
-   一覧表示
-====================== */
 app.get("/anime", (req, res) => {
   res.render("anime_list", { data: animeData });
 });
 
-/* ======================
-   新規登録（フォーム）
-====================== */
+
 app.get("/anime/create", (req, res) => {
   res.render("anime_new");
 });
 
-/* ======================
-   新規登録（登録処理）
-====================== */
+
 app.post("/anime", (req, res) => {
   animeData.push({
     name: req.body.name,
@@ -66,9 +52,7 @@ app.post("/anime", (req, res) => {
   res.redirect("/anime");
 });
 
-/* ======================
-   詳細表示
-====================== */
+
 app.get("/anime/:id", (req, res) => {
   const id = Number(req.params.id);
   res.render("anime_detail", {
@@ -79,9 +63,7 @@ app.get("/anime/:id", (req, res) => {
 
 
 
-/* ======================
-   編集画面
-====================== */
+
 app.get("/anime/edit/:id", (req, res) => {
   const id = Number(req.params.id);
   res.render("anime_edit", {
@@ -90,9 +72,7 @@ app.get("/anime/edit/:id", (req, res) => {
   });
 });
 
-/* ======================
-   更新処理
-====================== */
+
 app.post("/anime/update/:id", (req, res) => {
   const id = Number(req.params.id);
   animeData[id] = {
@@ -103,9 +83,7 @@ app.post("/anime/update/:id", (req, res) => {
   res.redirect("/anime/" + id);
 });
 
-/* ======================
-   削除処理
-====================== */
+
 app.post("/anime/delete/:id", (req, res) => {
   const id = Number(req.params.id);
   animeData.splice(id, 1);
@@ -114,21 +92,17 @@ app.post("/anime/delete/:id", (req, res) => {
 
 
 
-/* ======================
-   ゲーム一覧
-====================== */
 
-/* 一覧 */
+
 app.get("/game", (req, res) => {
   res.render("game_list", { data: gameData });
 });
 
-/* 新規作成（フォーム） */
+
 app.get("/game/create", (req, res) => {
   res.render("game_new");
 });
 
-/* 新規登録 */
 app.post("/game", (req, res) => {
   gameData.push({
     name: req.body.name,
@@ -138,13 +112,13 @@ app.post("/game", (req, res) => {
   res.redirect("/game");
 });
 
-/* 編集画面 */
+
 app.get("/game/edit/:id", (req, res) => {
   const id = Number(req.params.id);
   res.render("game_edit", { data: gameData[id], id });
 });
 
-/* 更新 */
+
 app.post("/game/update/:id", (req, res) => {
   const id = Number(req.params.id);
   gameData[id] = {
@@ -155,34 +129,32 @@ app.post("/game/update/:id", (req, res) => {
   res.redirect("/game/" + id);
 });
 
-/* 詳細 */
+
 app.get("/game/:id", (req, res) => {
   const id = Number(req.params.id);
   if (isNaN(id) || !gameData[id]) return res.redirect("/game");
   res.render("game_detail", { data: gameData[id], id });
 });
 
-/* 削除 */
+
 app.post("/game/delete/:id", (req, res) => {
   const id = Number(req.params.id);
   gameData.splice(id, 1);
   res.redirect("/game");
 });
 
-/* ======================
-   プロスピ投手一覧
-====================== */
+
 
 app.get("/pitcher", (req,res)=>{
   res.render("pitcher_list",{ data:pitcherData });
 });
 
-/* 新規作成 */
+
 app.get("/pitcher/create",(req,res)=>{
   res.render("pitcher_new");
 });
 
-/* 登録 */
+
 app.post("/pitcher",(req,res)=>{
   pitcherData.push({
     name:req.body.name,
@@ -194,13 +166,12 @@ app.post("/pitcher",(req,res)=>{
   res.redirect("/pitcher");
 });
 
-/* 編集 */
+
 app.get("/pitcher/edit/:id",(req,res)=>{
   const id=Number(req.params.id);
   res.render("pitcher_edit",{ data:pitcherData[id], id });
 });
 
-/* 更新 */
 app.post("/pitcher/update/:id",(req,res)=>{
   const id=Number(req.params.id);
   pitcherData[id]={
@@ -213,14 +184,14 @@ app.post("/pitcher/update/:id",(req,res)=>{
   res.redirect("/pitcher/"+id);
 });
 
-/* 詳細 */
+
 app.get("/pitcher/:id",(req,res)=>{
   const id=Number(req.params.id);
   if(isNaN(id)||!pitcherData[id]) return res.redirect("/pitcher");
   res.render("pitcher_detail",{ data:pitcherData[id], id });
 });
 
-/* 削除 */
+
 app.post("/pitcher/delete/:id",(req,res)=>{
   const id=Number(req.params.id);
   pitcherData.splice(id,1);
